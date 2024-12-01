@@ -1,0 +1,159 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (448.0.16.0.3)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["Frame", "Natural_Cork", "Anchor"]
+    def Xform "Frame" (
+        active = true
+    )
+    {
+        reorder nameChildren = ["left", "right", "up", "down", "Anchor"]
+        def Cube "left" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/Natural_Cork> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 1
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.048, 1, 0.048)
+            float3 xformOp:translate = (0.5, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "DefaultMaterial"
+            {
+                token outputs:surface.connect = </Root/Frame/left/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+                def Shader "DefaultSurfaceShader"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+            }
+        }
+
+        def Cube "right" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/Natural_Cork> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 1
+            float2 ui:nodegraph:node:pos = (20, 20)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.048, 1, 0.048)
+            float3 xformOp:translate = (-0.5, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "DefaultMaterial"
+            {
+                token outputs:surface.connect = </Root/Frame/right/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+                def Shader "DefaultSurfaceShader"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+            }
+        }
+
+        def Cube "up" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/Natural_Cork> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 1
+            float2 ui:nodegraph:node:pos = (32.36331, 471.47977)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1.048, 0.048, 0.048)
+            float3 xformOp:translate = (0, 0.5, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "DefaultMaterial"
+            {
+                token outputs:surface.connect = </Root/Frame/up/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+                def Shader "DefaultSurfaceShader"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+            }
+        }
+
+        def Cube "down" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/Natural_Cork> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 1
+            float2 ui:nodegraph:node:pos = (52.36331, 491.47977)
+            int ui:nodegraph:node:stackingOrder = 2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1.048, 0.048, 0.048)
+            float3 xformOp:translate = (0, -0.5, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "DefaultMaterial"
+            {
+                token outputs:surface.connect = </Root/Frame/down/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+                def Shader "DefaultSurfaceShader"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+            }
+        }
+
+        def Xform "Anchor" (
+            active = true
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def "Natural_Cork" (
+        active = true
+        references = @NaturalCork.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
